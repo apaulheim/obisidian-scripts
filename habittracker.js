@@ -10,8 +10,8 @@ string(choice(filter(file.tasks, (t) => t.habit = "Flylady").completed, "🏠", 
 string(choice(filter(file.tasks, (t) => t.habit = "Nahrungsergänzung").completed, "💊", "o")) AS "💊",
 string(choice(filter(file.tasks, (t) => t.habit = "Lesen").completed, "📖", "o")) AS "📖",
 string(choice(filter(file.tasks, (t) => t.habit = "Kalorien tracken").completed, "📋", "o")) AS "📋",
-string(choice(filter(file.tasks, (t) => t.habit = "Hautpflege").completed, "👱🏻‍♀️", "o")) AS "👱🏻‍♀️"
-FROM "2023"
+string(choice(filter(file.tasks, (t) => t.habit = "Hautpflege abends").completed, "👱🏻‍♀️", "o")) AS "👱🏻‍♀️"
+FROM "2024"
 WHERE file.day
 WHERE !contains(file.name, "conflict")
 WHERE file.day >= this.som
