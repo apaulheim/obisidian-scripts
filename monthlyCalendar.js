@@ -11,6 +11,7 @@ class MonthlyCalendar {
     ["Align", "Bilder/Sticker/icon_align.png"],
     ["Embody", "Bilder/Sticker/icon_embody.png"],
     ["Endure", "Bilder/Sticker/icon_endure.png"],
+    ["Rudern", "Bilder/Sticker/icon_rudern.png"],
   ]);
 
   workoutRegex = new RegExp("(?<workout>\\w+)");
