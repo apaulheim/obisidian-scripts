@@ -13,11 +13,11 @@ class HabitTrackerCyclic {
   }
 
   getEntries(queryResult, som, eom, habits) {
-    console.log(queryResult);
+    // console.log(queryResult);
     const start = new Date(som);
     const end = new Date(eom);
     const daysBetween = this.daysBetween(start, end) + 1;
-    console.log("daysbetw", daysBetween);
+    // console.log("daysbetw", daysBetween);
     const entries = [];
 
     let currentDate = new Date(start);
@@ -29,7 +29,7 @@ class HabitTrackerCyclic {
       for (let entry of queryResult.value.values) {
         if (entry.checked) {
           const habitId = habits.findIndex(
-            (habit) => entry.tags[0]?.substring(1) == habit[0]
+            (habit) => entry.tags[0]?.substring(1) == habit[0],
           );
           if (habitId > -1) {
             const index = this.daysBetween(
@@ -37,8 +37,8 @@ class HabitTrackerCyclic {
               new Date(
                 entry.file.day.c.year,
                 entry.file.day.c.month - 1,
-                entry.file.day.c.day
-              )
+                entry.file.day.c.day,
+              ),
             );
             entries[index][habitId + 1] = habits[habitId][1];
           }

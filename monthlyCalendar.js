@@ -305,7 +305,7 @@ class MonthlyCalendar {
     week = undefined,
     weekFile = undefined,
   ) {
-    console.log("render week", week);
+    //console.log("render week", week);
     const som = week !== undefined ? weekFile.sow : currentFile.som;
     const eom = week !== undefined ? weekFile.eow : currentFile.eom;
     const events = currentFile.events;
@@ -321,8 +321,8 @@ class MonthlyCalendar {
     const nextMonthEvents = nextMonthFile?.events || {};
 
     this.renderHeader(table);
-    console.log("startWeek", startWeek);
-    console.log("endWeek", endWeek);
+    //("startWeek", startWeek);
+    //("endWeek", endWeek);
     // If week is provided, only render that week
     const weekStart = week !== undefined ? week : startWeek;
     const weekEnd = week !== undefined ? week : startWeek + 5;
@@ -393,7 +393,7 @@ class MonthlyCalendar {
           prevMonthEvents[startDay.getDate().toString()]
         ) {
           let dayEvents = prevMonthEvents[startDay.getDate().toString()];
-          // console.log("DAY EVENTS", dayEvents);
+          // //("DAY EVENTS", dayEvents);
           multidayEvent = this.renderDay(
             app,
             containerDay,
@@ -438,7 +438,7 @@ class MonthlyCalendar {
   }
 
   renderDailyCyclic(app, containerDay, monthFile, dayFile) {
-    console.log(dayFile.file);
+    // //(dayFile.file);
     const day = dayFile.file.day.day;
     const month = dayFile.file.day.month;
     const events = monthFile?.events
@@ -463,7 +463,7 @@ class MonthlyCalendar {
     );
     const numberOfWeeks = Math.ceil(daysBetween / 7);
 
-    console.log("numberOfWeeks", numberOfWeeks);
+    // //("numberOfWeeks", numberOfWeeks);
 
     let table = container.createEl("div", {
       cls: ["monthly-grid", numberOfWeeks > 4 ? "reset-week" : ""],
