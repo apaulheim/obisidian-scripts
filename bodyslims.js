@@ -40,7 +40,8 @@ class BodySlims {
     return Math.round(diffInMilliseconds / oneDay);
   }
 
-  render(el, resultsWeek, resultsYear, twystartStr, eowStr, goals) {
+  render(el, resultsWeek, resultsYear, twystartStr, eowStr, goals, 
+    goalsEmojis) {
     const twystart = new Date(twystartStr);
     const twyend = new Date(twystartStr);
     twyend.setDate(twyend.getDate() + 70);
@@ -69,7 +70,10 @@ class BodySlims {
       yearlyScorePerGoal.reduce((a, b) => a + b, 0) /
         (yearlyScorePerGoal.length || 1)
     );
-    const overview = el.createEl("div", {
+    const container = el.createEl("div", {
+      cls: ["container"],
+    });
+    const overview = container.createEl("div", {
       cls: ["overview"],
     });
     const twy = overview.createEl("div", {
@@ -97,7 +101,7 @@ class BodySlims {
       text: this.formatDate(twyend),
       cls: ["timeline-entry"],
     });
-    const weekly = el.createEl("div", {
+    const weekly = container.createEl("div", {
       cls: ["weekly"],
     });
     weekly.createEl("div", {
@@ -112,7 +116,7 @@ class BodySlims {
         cls: ["goal-details"],
       });
       goalDetails.createEl("div", {
-        text: i == 0 ? `🥗` : `🚶‍♀️`,
+        text: goalsEmojis?.length > i ? goalsEmojis[i] : `Goal ${i + 1}`,
         cls: ["goal-title"],
       });
       const goalNumbers = goalDetails.createEl("div", {
@@ -139,7 +143,7 @@ class BodySlims {
       cls: ["percent"],
     });
 
-    const yearly = el.createEl("div", {
+    const yearly = container.createEl("div", {
       cls: ["yearly"],
     });
     yearly.createEl("div", {
@@ -154,7 +158,7 @@ class BodySlims {
         cls: ["goal-details"],
       });
       goalDetails.createEl("div", {
-        text: i == 0 ? `🥗` : `🚶‍♀️`,
+        text: goalsEmojis?.length > i ? goalsEmojis[i] : `Goal ${i + 1}`,
         cls: ["goal-title"],
       });
       const goalNumbers = goalDetails.createEl("div", {
@@ -186,7 +190,7 @@ class BodySlims {
     const isCurrentWeek = new Date() <= new Date(currentFile.eow);
     return `TASK
                 FROM "notes"
-                WHERE contains(tags, "#bodyslims${goalNo}")
+                WHERE contains(tags, "#${goalNo}")
                 WHERE file.day
                 WHERE !contains(file.name, "conflict")
                 WHERE file.day >= this.sow
@@ -198,7 +202,7 @@ class BodySlims {
     const isCurrentWeek = new Date() <= new Date(currentFile.eow);
     return `TASK
                 FROM "notes"
-                WHERE contains(tags, "#bodyslims${goalNo}")
+                WHERE contains(tags, "#${goalNo}")
                 WHERE file.day
                 WHERE !contains(file.name, "conflict")
                 WHERE file.day >= this.twystart
