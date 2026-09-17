@@ -13,17 +13,15 @@ function getTask(weekday, zone) {
     "Abstauben, Spinnweben, Lampe, Geräte #habitF",
     "Schrankfronten, Aussortieren, Schränke ordnen #habitF",
     `Home Blessing #habitF
-- [ ] Handtücher/Bettwäsche wechseln und waschen
-- [ ] Müll ausleeren
-- [ ] Spiegel
-- [ ] Waschbecken
-- [ ] Badewanne
-- [ ] Dusche
-- [ ] Toilette
-- [ ] Abstauben
-- [ ] Durch alle Zimmer saugen, ${zone} gründlich
-- [ ] Bad wischen
-- [ ] Küche wischen`,
+	- [ ] Handtücher/Bettwäsche wechseln und waschen
+	- [ ] Müll ausleeren
+	- [ ] Spiegel
+	- [ ] Waschbecken
+	- [ ] Badewanne
+	- [ ] Dusche
+	- [ ] Toilette
+	- [ ] Abstauben
+	- [ ] ${zone} gründlich saugen`,
     "Türen, Fenster, Lichtschalter, Steckdosen #habitF",
   ];
   return `${zone}: ${tasks[weekday % tasks.length]}`;
